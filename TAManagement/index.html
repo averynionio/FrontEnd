@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TA Management System</TAble></title>
+    <!--Page logo-->
+    <link rel="shortcut icon" href="./user.png">
+    <link rel="bookmark" href="./user.png">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header><img src="./head.png" alt="head"></header>
+    <section>
+        <aside>
+            <h3>Links</h3>
+            <a href="https://www.npu.edu/">NPU</a>
+            <br>
+            <br>
+            <a href="https://www.google.com/">Google</a>
+            <br>
+            <br>
+            <a href="https://www.npu.edu/lms-login">Canvas</a>
+            <br>
+            <br>
+            <a href="https://www.facebook.com">Facebook</a>
+        </aside>
+        <article>
+            <table>
+                <tr>
+                    <th colspan="2"><h3>TA candidates</h3></th>
+                </tr>
+                <tr>
+                    <td><label for="f_name">First Name:</label></td>
+                    <td><input type="text" id="f_name"></td>
+                </tr>
+                <tr>
+                    <td><label for="l_name">Last Name:</label></td>
+                    <td><input type="text" id="l_name"></td>
+                </tr>
+                <tr>
+                    <td><label for="id">Student ID:</label></td>
+                    <td><input type="text" id="input_id"></td>
+                </tr>
+                <tr>
+                    <td><label for="area">Area of Specialization:</label></td>
+                    <td><select name="area" id="areaL">
+                            <option value="Programming">Programming</option>
+                            <option value="Database">Database</option>
+                            <option value="Testing">Testing</option>
+                            <option value="Networking">Networking</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="select">Selected:</label></td>
+                    <td><input id="select" type="checkbox" name="selected"/></td>
+                </tr>
+                <tr>
+                    <th colspan="2" >
+                        <table class="table2">
+                            <tr>
+                                <th><button type="button" id="new" >New</button></th>
+                                <th><button type="button" id="edit">Edit</button></th>    
+                                <th><button type="button" id="delete">Delete</button></th>    
+                                <th><button type="button" id="save">Save</button></th>    
+                                <th><button type="button" id="cancel">Cancel</button></th>    
+                            </tr>
+                            <tr>
+                                <th><button type="button" id="first" >First</button></th>
+                                <th><button type="button" id="previous" style="font-size: 12px;">Previous</button></th>    
+                                <th><button type="button" id="next">Next</button></th>    
+                                <th><button type="button" id="last">Last</button></th>    
+                                <th><button type="button" id="selectbtn">Select</button></th> 
+                            </tr>
+                        </table>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2"><h3>Logs</h3></th>
+                </tr>
+                <tr>
+                    <th colspan="2"><textarea name="log" id="log" cols="40" rows="10" disabled="disabled"></textarea></th>
+                </tr>
+            </table>
+        </article>
+    </section>
+    <footer>© Copyright 2021 Northwestern Polytechnic University</footer>
+</body>
+<script src="./app.js"></script>
+</html>
