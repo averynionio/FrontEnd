@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(90deg,#e66465, #9198e5);
+}
+// /* 渐变轴为45度，从蓝色渐变到红色 */
+// linear-gradient(45deg, blue, red);
+// /* 从右下到左上、从蓝色渐变到红色 */
+// linear-gradient(to left top, blue, red);
+// /* 从下到上，从蓝色开始渐变、到高度40%位置是绿色渐变开始、最后以红色结束 */
+// linear-gradient(0deg, blue, green 40%, red);
+
+img.checkANDdelete{
+    pointer-events: none;
+} //加這個是為了讓按圖片就跟按button效果一樣 
+
+header{
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1{
+        color:white;
+        font-size: 3rem;
+    }
+}
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    input, button{
+        border: none;
+        padding: 0.25rem 0.5rem;
+        font-size: 1.6rem;
+        margin: 0.1rem;
+    }
+    input[type="number"]{
+        width: 75px;
+        text-align: center;
+    }
+    // 選定input是數字的即月日
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+    -moz-appearance: textfield;
+    }
+    //當input是數字，會自己出現按鈕，要隱藏，直接複製貼上下面網址的教學
+    //https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp
+
+    button{
+        cursor: pointer;
+        background-color:cornflowerblue;
+        color: white;
+    }
+}
+div.sort{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0rem;
+    
+    button{
+        border: none;
+        padding: 0.25rem 0.5rem;
+        font-size: 1.6rem;
+        cursor: pointer;
+        background-color:cornflowerblue;
+        color: white;
+    }
+        
+}
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    div.todo {
+        width: 30vw;
+        display: flex;
+        align-items: center;
+        margin: 0.2rem 0rem;
+        justify-content: center;
+        transition: all 0.2s ease;
+
+        p{
+            background-color: white;
+            color: black;
+            padding: 0.25rem 0.5rem;
+            font-size: 1.6rem;
+        }
+        p.todo-text{
+            width: 90%;
+            height: 35px;
+        }
+        p.todo-time{
+            width: 40%;
+            text-align: center;
+            height: 35px;
+        }
+        button{
+            padding: 0.15rem 0.25rem;
+            font-size: 1.6rem;
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+            
+            img{
+                width: 30px;
+                height: 30px;
+                contain: content;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+.done{
+    opacity: 0.5; //透明度
+    text-decoration: line-through; //畫一條線
+    text-decoration-thickness: 0.15rem; //線的粗度
+}
+
+@keyframes scaleUp {
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+@keyframes scaleDown {
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(0);
+    }
+}
