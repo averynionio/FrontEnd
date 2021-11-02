@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part2</title>
+    <style>
+        * {
+            margin: 1rem;
+            box-sizing: border-box;
+        }
+        body {
+            position:absolute;
+            top:5%;
+            right:5%;
+            height: 90%;
+            width: 90%;
+            background-color: rgb(255, 255, 247);
+        }
+        header, footer {
+            width: 100%;
+            position:absolute;
+            background-color: rgb(1, 123, 145);
+            color: white;
+            border: 1px solid black;
+        }
+        header {
+            text-align: left;
+            top:0%;
+            height: 40%;
+            font-size: 20px;
+        }
+        footer {
+            text-align: center;
+            height: 10%;
+            top:90%;
+        }
+
+        #left, #right {
+            position:absolute;
+            left: 0%;
+            top: 42%;
+            height: 45%;
+            width: 50%;
+            background-color: rgb(249, 125, 125);
+            border: 1px solid black;
+            text-align: center;
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+        }
+        #right {
+            left: 50%;
+        }
+        button {
+            margin: 1rem;
+            height: 90%;
+            width: 75%;
+            border: 1px solid rgb(0, 0, 0);
+            color: floralwhite;
+            font-size: 25px;
+        }
+        .orgSide {
+            background-color: rgb(104, 66, 165);
+        }
+        .putSide {
+            background-color: rgb(176, 25, 70);
+        }
+        #startBtn {
+            margin: 0%;
+            height: 50px;
+            width: 150px;
+            background-color: rgb(255, 255, 255);
+            color:rgb(1, 123, 145);
+            position: absolute;
+            left: 70%;
+            font-size: 18px;
+        }
+        :disabled {
+            background-color: rgb(188, 165, 196, 0.2);
+            border: 1.5px solid #7e807e;
+        }
+
+    </style>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <ul>
+            <li>Presses the Start button, 20-second timer begins ticking.</li>
+            <li>The application will randomly select a four-letter word.</li>
+            <li>Click one letter box in the left panel then click a box in the right panel.</li>
+            <li>If choose the correct position, the selected letter will be moved to the right panel.</li>
+            <li>Move 4 letter to the right positon in 20-second to win the game!</;>
+        </ul>
+        
+        <button type="button" id="startBtn">Start Game</button>
+    </header>
+    
+    <section id="left">
+        <button type="button" class="orgSide" id="org1"></button>
+        <button type="button" class="orgSide" id="org2"></button>
+        <button type="button" class="orgSide" id="org3"></button>
+        <button type="button" class="orgSide" id="org4"></button>
+    </section>
+    <section id="right">
+        <button type="button" class="putSide" id="put1" disabled="disabled"></button>
+        <button type="button" class="putSide" id="put2" disabled="disabled"></button>
+        <button type="button" class="putSide" id="put3" disabled="disabled"></button>
+        <button type="button" class="putSide" id="put4" disabled="disabled"></button>
+    </section>
+
+    <footer> <h1>Guess Word</h1> </footer>
+</body>
+<script>
+    //////////////////////
+    //// Cteate world
+    //////////////////////
+    var words = [["L",'O','V','E'], ["P",'L','A',"Y"], ["G","O",'L','D'], ['H','A','T','E'], ['H','O','P','E'], ['J','O','K','E']]
+    var number = 0;
+    var targetWords = words[number];
+    var correctIdx = [0, 1, 2, 3];
+    var answer = 0;
+    var curText = "";
+    var rightAns = [0,0,0,0]
+    var orgs = new Array;
+    var puts = new Array;
+    $(".orgSide").each(function (index) {
+        orgs.push(this)
+    });
+    console.log(orgs)
+
+    $(".putSide").each(function (index) {
+        puts.push(this)
+    });
+    console.log(puts)
+
+    
+    startBtn = document.getElementById("startBtn");
+    startBtn.addEventListener("click", e => { game(); })
+
+    //////////////////////
+    //// Set Time
+    //////////////////////
+    var setTime = setTimeout(function(){
+        closeGameMode("You Lose!!");
+    }, 20000);
+    
+    function stopTime(){
+        clearTimeout(setTime);
+    }
+
+    function game() {
+        //////////////////////
+        //// Define Mode
+        //////////////////////
+        function moveMode() { 
+            $(".putSide").each(function (f) {
+                this.disabled = "disabled";
+            });
+            $(".orgSide").each(function (f) {
+                this.disabled = "";
+            });
+        }
+        function putMode(index, correctIndex) {
+            $(".putSide").each(function (f) {
+                this.disabled = "";
+            });
+            $(".orgSide").each(function (f) {
+                this.disabled = "disabled";
+            });
+            orgs[index].disabled = "";
+        }
+        function closeGameMode (text) {
+            $(".putSide").each(function (f) {
+                this.disabled = "disabled";
+            });
+            $(".orgSide").each(function (f) {
+                this.disabled = "disabled";
+            });
+            setTimeout(function(){
+                alert(text)}, 100);
+        }
+        function newGameMode() {
+            moveMode();
+            $(".putSide").each(function (f) {
+                this.innerText = "";
+            });
+            number = Math.floor(Math.random() * words.length);
+            targetWords = words[number];
+            answer = 0;
+            curText = "";
+            let curBox;
+            rightAns = [0,0,0,0];
+            correctIdx = [0, 1, 2, 3];
+            
+            for(let i = 0; i < 4; i++){
+                let rand = parseInt(Math.random()*4);
+                let t = targetWords[rand];
+                targetWords[rand] = targetWords[i];
+                targetWords[i] = t;
+                let j = correctIdx[rand]
+                correctIdx[rand] = correctIdx[i];
+                correctIdx[i] = j;
+            }
+            console.log(targetWords)
+            console.log(correctIdx)
+            $(".orgSide").each(function (index) {
+                this.innerText = targetWords[index];
+            });
+
+            stopTime();
+
+            setTime = setTimeout(function(){
+                closeGameMode("You Lose!!");
+            }, 20000);
+
+        }
+        newGameMode();
+
+        //////////////////////
+        //// Game
+        //////////////////////
+        function wrongAnswer() {
+            curBox.innerText = curText;
+            moveMode();
+        }
+        function rightAnswer(idx) {
+            puts[answer].innerText = curText;
+            rightAns[idx] = 1;
+            let sum = rightAns.reduce(function(n1, n2) {
+                return n1 + n2;
+            })
+            if (sum == 4) {
+                stopTime();
+                closeGameMode("You win!!");
+            } else {
+                moveMode();
+            }
+        }
+        function move(box, index, correctIndex) {
+            console.log(index,correctIndex)
+            box.innerText = "";
+            curBox = box;
+            curText = targetWords[index];
+            answer = correctIndex;
+            putMode(index, correctIndex);
+        }
+        
+        orgs[0].addEventListener("click", e => {
+            move(orgs[0], 0, correctIdx[0]);
+        });
+        orgs[1].addEventListener("click", e => {
+            move(orgs[1], 1, correctIdx[1]);
+        });
+        orgs[2].addEventListener("click", e => {
+            move(orgs[2], 2, correctIdx[2]);
+        });
+        orgs[3].addEventListener("click", e => {
+            move(orgs[3], 3, correctIdx[3]);
+        });
+
+        puts[0].addEventListener("click", e => {
+            if (answer == 0) {
+                rightAnswer(0);
+            } else {
+                wrongAnswer();
+            }
+        });
+        puts[1].addEventListener("click", e => {
+            if (answer == 1) {
+                rightAnswer(1);
+            } else {
+                wrongAnswer();
+            }
+        });
+        puts[2].addEventListener("click", e => {
+            if (answer == 2) {
+                rightAnswer(2);
+            } else {
+                wrongAnswer();
+            }
+        });
+        puts[3].addEventListener("click", e => {
+        if (answer == 3) {
+                rightAnswer(3);
+            } else {
+                wrongAnswer();
+            }
+        });
+    }
+
+</script>
+</html>
