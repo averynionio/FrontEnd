@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avery | Find Your Piexls</title>    
+    <!--Google font setting-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../public/styles/order.css" />
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <img src="../public/images/logo.png" alt="Logo" />
+          <h1>Avery Photo Shop</h1>
+        </div>
+  
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Order</a></li>
+            <li><a href="/cart">Cart</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section class="products">
+          <h2>
+            Choose The Best Moment You Like <br />
+            <span style="color: #12948c">Keep The Moment Forever</span>
+          </h2>
+  
+          <section class="cards">
+            <div class="card">
+              <img
+                src="../public/images/Chicago.jpg"
+                alt="Chicago"
+              />
+              <h4>Chicago</h4>
+              <p>
+                Enjoy the bule sky and city view from Chicago Sky Deck 103rd floor.
+              </p>
+              <br>
+              <p>
+                US$ 5.00
+              </p>
+              <button class="choose" id="choose1" value="Chicago">Choose</button>
+            </div>
+            <div class="card">
+              <img
+                src="../public/images/bear.jpg"
+                alt="Porlar Bear"
+              />
+              <h4>Polar Bear</h4>
+              <p>
+                The cutest fat butt in San Diego Water World.
+              </p>
+              <br>
+              <p>
+                US$ 7.00
+              </p>
+              <button class="choose" id="choose2" value="Polar Bear">Choose</button>
+            </div>
+            <div class="card">
+              <img
+                src="../public/images/Nantou.jpg"
+                alt="Nantou"
+              />
+              <h4>Nan Tou</h4>
+              <p>
+                In here Wanyou Forest, Taiwan Nan Tou, you will forget everything but fresh air.
+              </p>
+              <br>
+              <p>
+                US$ 8.00
+              </p>
+              <button class="choose" id="choose3">Nan Tou</button>
+            </div>
+          </section>
+        </section>
+        <section class="table">
+          <!-- <form action='/order' method="post"> -->
+            <table>
+                  <tr>
+                    <th>Photo Name</th>
+                    <td>
+                      <input type="text" id="photoName" name="photoName" disabled/>
+                    </td>
+                  </tr>
+                  <tr>
+                      <th>Quality of Images</th>
+                      <td>
+                          <input list="QualityList" type="text" name="quailty" id="quailty" required/>
+                          <datalist id="QualityList">
+                              <option value="8K">8K +US 5.00</option>
+                              <option value="4K">4K +US 3.00</option>
+                              <option value="2K">2K +US 1.00</option>
+                              <option value="720HD">720HD Free</option>
+                          </datalist>
+                      </td>
+                  </tr>
+                  <tr>
+                      <th>Type of Items</th>
+                      <td id="type">
+                          <input type="radio" name="type" value="Hardcopy" checked>  Hard-copy prints</input>
+                          <br>
+                          <input type="radio" name="type" value="Poster">  Posters +US 1.00</input>
+                          <br>
+                          <input type="radio" name="type" value="Coffee Mugs">  Coffee mugs +US 3.00</input>
+                          <br>
+                          <input type="radio" name="type" value="T-shirts">  T-shirts +US 5.00</input>
+                      </td>
+                  </tr>
+                  <tr>
+                      <th>Glossy Finish</th>
+                      <td>
+                          <input id="glossy" type="checkbox" name="glossy">  Yes +US 2.00</input>
+                      </td>
+                  </tr>
+                  <tr>
+                      <th>Quantity</th>
+                      <td><input id="quantity" name="qty" type="Number" required value="1" min="1"/></td>
+                  </tr>
+                  <tr>
+                      <th>Calculate</th>
+                      <td><button class="rent" id="calculate" type="button">Calculate</button></td>
+                  </tr>
+                  <tr>
+                      <th>Add to Cart</th>
+                      <td><button class="rent" id="addToCart" type="submit">Add</button></td>
+                  </tr>
+                  <tr>
+                      <th>Go to Cart</th>
+                      <td><button class="rent" onclick="location.href='/cart'" type="button">Go</button></td>
+                  </tr>
+                  <tr>
+                      <th>Cost of Selected items</th>
+                      <td><input id="cost" type="number" name="price" disabled></input></td>
+                  </tr>
+                  <tr>
+                    <th>Expected delivery date</th>
+                    <td><label id="shipping"></label></td>
+                  </tr>
+              </table>
+            <!-- </form> -->
+        </section>
+      </main>
+  
+      <footer>
+        <div class="logo">
+            <h2>Avery Photo Shop</h2>
+            <br>
+            <h3>47671 Westinghouse Dr, Fremont, CA 94539
+              <br>
+              +1 123-321-0000
+            </h3>
+          </div>
+  
+          <section class="links">
+            <a href="#"><img src="../public/images/fb.svg"" alt="facebook" /></a>
+            <a href="#"><img src="../public/images/ig.svg" alt="instagram" /></a>
+            <a href="#"><img src="../public/images/twitter.svg" alt="twitter" /></a>
+            <a href="#"><img src="../public/images/youtube.svg" alt="youtube" /></a>
+          </section>
+      </footer>
+</body>
+<script>
+  ////////////////
+  // Picture Name
+  ///////////////
+  var photoName = "None";
+  var initPrice = 0.00;
+  var choose1 = document.getElementById("choose1");
+  var choose2 = document.getElementById("choose2");
+  var choose3 = document.getElementById("choose3");
+
+  var choosedImage = document.getElementById("photoName");
+
+  choose1.addEventListener("click", e => {
+      choosedImage.value = 'Chicago';
+      photoName = "Chicago";
+      initPrice = 5.00;
+  });
+  choose2.addEventListener("click", e => {
+      choosedImage.value = 'Polar Bear';
+      photoName = 'Polar Bear';
+      initPrice = 7.00;
+  });
+  choose3.addEventListener("click", e => {
+      choosedImage.value = 'Nan Tou';
+      photoName = 'Nan Tou';
+      initPrice = 8.00;
+  });
+
+  ////////////////
+  // Table info
+  ///////////////
+  var price = 0.00;
+  var quality = "";
+  var type = new String;
+  var glossy = 'No'
+  var qty = 0;
+  var costLabel = document.getElementById("cost");
+  var today = new Date();
+  var shipDate = today;
+  Date.prototype.Format = function(fmt) { 
+    var o = {   
+      "M+" : this.getMonth()+1,                 //月份   
+      "d+" : this.getDate(),                    //日   
+      "h+" : this.getHours()%12 == 0 ? 12 : this.getHours()%12, //小时           
+      "H+" : this.getHours(), //小时
+      "m+" : this.getMinutes(),                 //分   
+      "s+" : this.getSeconds(),                 //秒   
+      "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+      "S"  : this.getMilliseconds()             //毫秒   
+    };   
+    if(/(y+)/.test(fmt))   
+      fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+    for(var k in o)   
+      if(new RegExp("("+ k +")").test(fmt))   
+    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+    return fmt;   
+  }  
+
+  var glossyBox = document.getElementById("glossy")
+  glossyBox.addEventListener('change', function() {
+    if (this.checked) {
+      glossy = "Yes";
+    } else {
+      glossy = "No";
+    }
+  });
+
+  function getValues() {
+    quality = document.getElementById("quailty").value;
+    type = document.querySelector('input[name="type"]:checked').value
+    qty = parseInt(document.getElementById("quantity").value);
+  }
+
+  function getPriceAndDate() {
+    price = initPrice;
+    switch(quality){
+      case '8K': 
+        price += 5.00;
+        break;
+      case '4K': 
+        price += 3.00;
+        break;
+      case '2K': 
+        price += 1.00;
+        break;
+      default: 
+        price += 2.00;
+    }
+    switch(type){
+      case 'Poster': 
+        price += 1.00;
+        break;
+      case 'Coffee Mugs': 
+        price += 3.00;
+        shipDate.setDate(today.getDate()+2);
+        break;
+      case 'T-shirts':
+        price += 5.00;
+        shipDate.setDate(today.getDate()+5);
+      default: 
+        price += 0.00;
+    }
+    if (glossy == 'Yes') {
+      price += 2.00;
+    }
+    price *= qty;
+  }
+
+  function messageGo() {
+    $.ajax({                                     
+        url: "/order",
+        data: "&photoName=" + photoName + "&quailty=" + quality + "&type=" + type + "&glossy=" + glossy + "&qty=" + qty + "&price=" + price,   
+        type: "POST",
+        dataType: 'json',
+        //error: function () { 
+        //    alert("Faild");
+        //},
+        //success: function () {
+        //    alert("Add to cart");
+        //}
+    });
+  }
+
+  function calculateFtn() {
+    getValues();
+    if (photoName == "None") {
+      alert("Please choose the photo.")
+    } else if (quality == "") {
+      alert("Please choose quality.")
+    } else if (qty <= 0) {
+      alert("Please enter quantity.")
+    } else {
+      getValues();
+      getPriceAndDate();
+      cost.value = price;
+      document.getElementById("shipping").innerHTML = shipDate.Format("MM-dd-yyyy");
+    }
+  }
+
+  var calculate = document.getElementById("calculate");
+  calculate.addEventListener("click", e => {
+    calculateFtn();
+  });
+  var addBtn = document.getElementById("addToCart");
+  addBtn.addEventListener("click", e => {
+    calculateFtn();
+    messageGo();
+  });
+
+</script>
+</html>
